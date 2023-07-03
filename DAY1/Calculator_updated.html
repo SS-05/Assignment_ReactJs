@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px;
+        }
+
+        table {
+            border-collapse: collapse;
+            background-color: rgb(205, 248, 198);
+
+        }
+
+        td {
+            height: 50px;
+            width: 100px;
+            text-align: center;
+            border: 2px solid black;
+            cursor: pointer;
+            padding:4px;
+        }
+
+        td:hover{
+            background-color: rgb(149, 241, 166);
+            box-shadow: rgba(71, 243, 97, 0.55) 0px 5px 15px;
+
+        }
+        .num,
+        #equal {
+            border: none;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: white;
+            font-size: 18px;
+            width: 100px;
+            height: 50px;
+        }
+        #spacebar{
+            font-size: 24px;
+            border:2px solid black;
+            width:80%;
+            height:80%;
+        }
+        .heading{
+            color:rgb(244, 66, 21);
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="align">
+        <table>
+            <tr>
+                <td colspan="3" class="heading">CALCULATOR</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="" onclick="numFun(this)" id="spacebar"></td>
+            </tr>
+            <tr>
+                <td><button onclick="C()" class="num">Clear</button></td>
+                <td><button onclick="numFun(this)" class="num">0</button></td>
+                <td><button onclick="eql()" id="equal">=</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="numFun(this)" class="num">1</button></td>
+                <td><button onclick="numFun(this)" class="num">2</button></td>
+                <td><button onclick="numFun(this)" class="num">3</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="numFun(this)" class="num">4</button></td>
+                <td><button onclick="numFun(this)" class="num">5</button></td>
+                <td><button onclick="numFun(this)" class="num">6</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="numFun(this)" class="num">7</button></td>
+                <td><button onclick="numFun(this)" class="num">8</button></td>
+                <td><button onclick="numFun(this)" class="num">9</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="numFun(this)" class="num">+</button></td>
+                <td><button onclick="numFun(this)" class="num">-</button></td>
+                <td><button onclick="numFun(this)" class="num">/</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="numFun(this)" class="num">*</button></td>
+                <td><button onclick="numFun(this)" class="num">%</button></td>
+                <td><button onclick="numFun(this)" class="num">.</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var content = document.getElementById("spacebar");
+
+        function numFun(button) {
+            console.log(button.textContent);
+            content.value += button.textContent;
+        }
+
+        function eql() {
+            var operation;
+            var num1 = "";
+            var num2 = "";
+
+            for (let i = 0; i < content.value.length; i++) {
+                if (
+                    content.value[i] === "+" ||
+                    content.value[i] === "-" ||
+                    content.value[i] === "/" ||
+                    content.value[i] === "*" ||
+                    content.value[i] === "%"
+                ) {
+                    operation = content.value[i];
+                    num1 = content.value.substring(0, i);
+                    num2 = content.value.substring(i + 1);
+                    break;
+                }
+            }
+
+            num1 = Number(num1);
+            num2 = Number(num2);
+
+            if (operation === "+") {
+                content.value = num1 + num2;
+            } else if (operation === "-") {
+                content.value = num1 - num2;
+            } else if (operation === "*") {
+                content.value = num1 * num2;
+            } else if (operation === "/") {
+                content.value = num1 / num2;
+            } else if (operation === "%") {
+                content.value = num1 % num2;
+            }
+        }
+        function C(){
+                content.value=""
+            }
+    </script>
+</body>
+
+</html>

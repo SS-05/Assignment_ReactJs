@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCI</title>
+</head>
+
+<body>
+    <form style="border:2px solid black;padding:20px">
+        <h1 style="text-align: center;">CALCULATOR</h1>
+        <div style="line-height: 60px;">
+            <div>
+                <label for="val1">Number 1:</label>
+                <input type="number" name="" id="val1" placeholder="Number 1">
+            </div>
+            <div>
+                <label for="val2">Number 2:</label>
+                <input type="number" name="" id="val2" placeholder="Number 2">
+            </div>
+            <div>
+                <!-- <input type="text" name="" id="op" placeholder="Operation"> -->
+                <form>
+                    <select id="operationSelect">
+                      <option value="">Select an operation</option>
+                      <option value="add">Addition</option>
+                      <option value="sub">Subtraction</option>
+                      <option value="mul">Multiplication</option>
+                      <option value="div">Division</option>
+                    </select>
+                </form>
+            </div>
+            <input type="button" value="Perform" onclick="cal()" id="">
+        </div>
+        <span>The Result is:<p></p></span>
+    </form>
+    <script>
+        function cal() {
+            const a = document.getElementById("val1").value;
+            const b = document.getElementById("val2").value;
+            const op = document.getElementById("operationSelect").value;
+            const sum = document.querySelector("p");
+            if (op == "add") {
+                sum.textContent = Number(a) + Number(b);
+            }
+            else if (op == "sub") {
+                sum.textContent = Number(a) - Number(b);
+            }
+            else if (op == "mul") {
+                sum.textContent = Number(a) * Number(b);
+            }
+            else if (op == "div") {
+                sum.textContent = Number(a) / Number(b);
+            }
+            else {
+                sum.textContent = "Invalid operation"
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

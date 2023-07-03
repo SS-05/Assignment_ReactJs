@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <script>
+    var username = localStorage.getItem('username');
+    var password = localStorage.getItem('password');
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('username').textContent = username;
+      document.getElementById('password').textContent = password;
+    });
+  </script>
+</head>
+<body>
+  <h2>Welcome <span id="username"></h2>
+</body>
+</html>

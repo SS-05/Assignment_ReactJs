@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO_LIST</title>
+</head>
+
+<body>
+
+    <input type="text" id="item-input" placeholder="Enter Item" autofocus>
+    <button id="add" type="button">Add Item</button>
+    <button id="del" type="button">Delete Item</button>
+    <button id="edit" type="button">Edit Item</button>
+
+    <ol id="item-list">
+
+    </ol>
+
+    <script>
+        const itemList = document.getElementById('item-list');
+        const itemInput = document.getElementById('item-input');
+        const add = document.getElementById('add');
+        const del = document.getElementById('del');
+        const edit = document.getElementById('edit')
+        // edit.addEventListener('click', () => {
+        //     const index = parseInt(itemInput.value) - 1;
+        //     const itemToUpdate = itemList.children[index];
+        //     if (itemToUpdate) {
+        //         itemToUpdate.innerHTML = "";
+        //         itemInput.textContent=itemToUpdate;
+        //     }
+        // });
+
+        edit.addEventListener('click', () => {
+            const index = parseInt(itemInput.value) - 1;
+            const itemToUpdate = itemList.children[index];
+            if (itemToUpdate) {
+                const newItem = prompt("Enter the updated text for the item");
+                itemToUpdate.textContent = newItem;
+                itemInput.value = "";
+            } else {
+                alert("Invalid index or item not found!");
+            }
+        });
+        
+        del.addEventListener('click', () => {
+            // const len=itemList.children.length;
+            const index = itemInput.value;
+            itemList.removeChild(itemList.children[(index - 1)]);
+
+        })
+        add.addEventListener('click', () => {
+            const newItem = itemInput.value;
+            const li = document.createElement('li');
+            li.textContent = newItem;
+            itemList.appendChild(li);
+            itemInput.value = '';
+        });
+
+    </script>
+</body>
+
+</html>
